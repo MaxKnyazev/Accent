@@ -48,3 +48,14 @@ word = 'апострОф';
 checkWord(words, index, word);
 
 _writeConsole();
+
+//Функция вычисления случайного числа от min до max включительно
+/*
+function randomInteger(min, max) {
+    var rand = min + Math.random() * (max + 1 - min);
+    rand = Math.floor(rand);
+    return rand;
+}
+
+alert( randomInteger(5, 10) );
+*/
