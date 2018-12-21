@@ -6,11 +6,12 @@ let words = [
     {trueWord : 'апострОф', falseWord : 'апОстроф'},
     ];
 
+let lengthWords = words.length-1;
+
 // let index = 4;
 // let word = 'апострОф';
 let index = 2;
 let word = 'свЕкла';
-let lengthWords = words.length-1;
 
 function replaceElements(arr, i) {
     let temp = arr[i];
