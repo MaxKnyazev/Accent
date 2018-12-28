@@ -59,3 +59,16 @@ function randomInteger(min, max) {
 
 alert( randomInteger(5, 10) );
 */
+
+// ------------------------- Работа с кнопками -------------------------
+
+let buttonBegin = document.querySelector('.button--begin');
+let buttonTrue = document.querySelector('.button--true');
+let buttonFalse = document.querySelector('.button--false');
+
+
+buttonBegin.addEventListener('click', function() {
+    buttonTrue.classList.remove('button--hide');
+    buttonFalse.classList.remove('button--hide');
+    this.classList.add('button--hide');
+});
