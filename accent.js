@@ -23,7 +23,7 @@ function replaceElements(arr, i) {
     arr[lengthWords] = temp;
 }
 
-function checkWord(arr, i) {
+function needReplace(arr, i) {
     if (i === lengthWords) {
         lengthWords -= 1;
     } else {
@@ -32,7 +32,7 @@ function checkWord(arr, i) {
     }
 }
 
-// checkWord(words, index, word);
+// needReplace(words, index, word);
 // _writeConsole();
 
 // ------------------------- Работа с кнопками -------------------------
@@ -43,17 +43,20 @@ let buttonFalse = document.querySelector('.button--false');
 let contentButtons = document.querySelector('.content__buttons');
 
 
-buttonBegin.addEventListener('click', function() {
-    buttonTrue.classList.remove('button--hide');
-    buttonFalse.classList.remove('button--hide');
-    this.classList.add('button--hide');
-});
-
 let index;
 let countTrue = 0;
 let countFalse = 0;
 
-while (true) {
+
+buttonBegin.addEventListener('click', function() {
+    buttonTrue.classList.remove('button--hide');
+    buttonFalse.classList.remove('button--hide');
+    this.classList.add('button--hide');
+
+
+
+
+//TODO:*******************************************************************
     index = randomInteger(0, lengthWords);
     console.log(index);
     console.log(words[index]);
@@ -64,20 +67,34 @@ while (true) {
     if (randomInteger(0, 1)) {
         contentButtons.style.flexDirection = 'column-reverse';
     };
+//TODO:*******************************************************************
+
+
+
+});
 
     buttonTrue.addEventListener('click', function() {
+        //TODO: поменять background-color кнопкам (сообщение пользователю).
+        //TODO: progress bar true - увеличить значение на 1.
+        //TODO: Текущее слово должно попасть в конец массива.
+        //TODO: Уменьшить lengthWords на 1 (если возможно - проверка на game over).
+        //TODO: Расчитать новую пару слов.
+        //TODO: Поставить новую пару слов в кнопки.
         console.log('click true ' + ++countTrue);
-        checkWord(words, index);
+        needReplace(words, index);
     });
 
     buttonFalse.addEventListener('click', function() {
+        //TODO: поменять background-color кнопкам (сообщение пользователю).
+        //TODO: progress bar false - увеличить значение на 1.
+        //TODO: Расчитать новую пару слов.
+        //TODO: Поставить новую пару слов в кнопки.
         console.log('click false ' + ++countFalse);
     });
-}
 
 //****************************************************************************
 
-// TODO: тестовая функция
+// Тестовая функция:
 function _writeConsole() {
     words.forEach(function(elem) {
         console.log(elem);
