@@ -2,8 +2,12 @@
     font-family: Arial;
 }
 
+body {
+    background-color: #f2f2f2;
+}
+
 .wrapper {
-    background-color: #fff;
+    background-color: #f2f2f2;
 }
 
     .content {
