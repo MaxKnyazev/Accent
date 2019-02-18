@@ -12,6 +12,8 @@ let words = [
     buttonTrue = document.querySelector('.button--true'),
     buttonFalse = document.querySelector('.button--false'),
     contentButtons = document.querySelector('.content__buttons'),
+    progressBarTrue = document.querySelector('.progressBar--true'),
+    progressBarFalse = document.querySelector('.progressBar--false'),
     index,
     countTrue = 0,
     countFalse = 0;
@@ -57,7 +59,7 @@ function initButtons(flag) {
     }
 
     index = randomInteger(0, lengthWords);
-    console.log(index);
+    // console.log(index);
     // console.log(words[index]);
 
     setButtonsText(index);
@@ -75,22 +77,7 @@ buttonBegin.addEventListener('click', function() {
     this.classList.add('button--hide');
 
 
-    _writeConsole();
-
-
-
-
-
-    // index = randomInteger(0, lengthWords);
-    // console.log(index);
-    // // console.log(words[index]);
-    //
-    // setButtonsText(index);
-    // reverseButtons();
-
-
-
-
+    // _writeConsole();
 
     initButtons(false);
 });
@@ -104,28 +91,11 @@ buttonBegin.addEventListener('click', function() {
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
 
-        console.log('click true ' + ++countTrue);
+        progressBarTrue.style.width = ++countTrue + '%';
 
         initButtons(true);
 
-
-
-
-
-        // needReplace(words, index);
-        //
-        // index = randomInteger(0, lengthWords);
-        // console.log(index);
-        // // console.log(words[index]);
-        //
-        // setButtonsText(index);
-        // reverseButtons();
-
-
-
-
-
-        _writeConsole();
+        // _writeConsole();
     });
 
     buttonFalse.addEventListener('click', function() {
@@ -134,26 +104,13 @@ buttonBegin.addEventListener('click', function() {
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
 
-        console.log('click false ' + ++countFalse);
+        // console.log('click false ' + ++countFalse);
+
+        progressBarFalse.style.width = ++countFalse + '%';
 
         initButtons(false);
 
-
-
-
-
-        // index = randomInteger(0, lengthWords);
-        // console.log(index);
-        // // console.log(words[index]);
-        //
-        // setButtonsText(index);
-        // reverseButtons();
-
-
-
-
-
-        _writeConsole();
+        // _writeConsole();
     });
 
 //****************************************************************************
