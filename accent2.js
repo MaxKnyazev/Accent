@@ -12,6 +12,8 @@ let words = [
     buttonTrue = document.querySelector('.button--true'),
     buttonFalse = document.querySelector('.button--false'),
     contentButtons = document.querySelector('.content__buttons'),
+    progressBarTrue = document.querySelector('.progressBar--true'),
+    progressBarFalse = document.querySelector('.progressBar--false'),
     index,
     countTrue = 0,
     countFalse = 0;
@@ -50,19 +52,19 @@ function reverseButtons() {
     }
 }
 
-// function initButtons(flag) {
-//
-//     if (flag) {
-//         needReplace(words, index);
-//     }
-//
-//     index = randomInteger(0, lengthWords);
-//     console.log(index);
-//     console.log(words[index]);
-//
-//     setButtonsText(index);
-//     reverseButtons();
-// }
+function initButtons(flag) {
+
+    if (flag) {
+        needReplace(words, index);
+    }
+
+    index = randomInteger(0, lengthWords);
+    // console.log(index);
+    // console.log(words[index]);
+
+    setButtonsText(index);
+    reverseButtons();
+}
 
 // needReplace(words, index, word);
 // _writeConsole();
@@ -75,24 +77,9 @@ buttonBegin.addEventListener('click', function() {
     this.classList.add('button--hide');
 
 
-    _writeConsole();
+    // _writeConsole();
 
-
-
-
-
-    index = randomInteger(0, lengthWords);
-    console.log(index);
-    // console.log(words[index]);
-
-    setButtonsText(index);
-    reverseButtons();
-
-
-
-
-
-    // initButtons(false);
+    initButtons(false);
 });
 
 buttonTrue.addEventListener('click', function() {
@@ -104,28 +91,11 @@ buttonTrue.addEventListener('click', function() {
     // Расчитать новую пару слов.
     // Поставить новую пару слов в кнопки.
 
-    console.log('click true ' + ++countTrue);
+    progressBarTrue.style.width = ++countTrue + '%';
 
-    // initButtons(true);
+    initButtons(true);
 
-
-
-
-
-    needReplace(words, index);
-
-    index = randomInteger(0, lengthWords);
-    console.log(index);
-    // console.log(words[index]);
-
-    setButtonsText(index);
-    reverseButtons();
-
-
-
-
-
-    _writeConsole();
+    // _writeConsole();
 });
 
 buttonFalse.addEventListener('click', function() {
@@ -134,26 +104,13 @@ buttonFalse.addEventListener('click', function() {
     // Расчитать новую пару слов.
     // Поставить новую пару слов в кнопки.
 
-    console.log('click false ' + ++countFalse);
+    // console.log('click false ' + ++countFalse);
 
-    // initButtons(false);
+    progressBarFalse.style.width = ++countFalse + '%';
 
+    initButtons(false);
 
-
-
-
-    index = randomInteger(0, lengthWords);
-    console.log(index);
-    // console.log(words[index]);
-
-    setButtonsText(index);
-    reverseButtons();
-
-
-
-
-
-    _writeConsole();
+    // _writeConsole();
 });
 
 //****************************************************************************
