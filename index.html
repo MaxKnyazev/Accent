@@ -18,9 +18,15 @@
             <div class="progressBar-wrapper"> <div class="progressBar--true"></div> </div>
 
             <div class="content__buttons">
-                <button class="button button--true button--hide">Правильно</button>
+                <div class="gameOver hide">
+                    <p>Вы победили!</p>
+
+                    <p class="countError"></p>
+                </div>
+
+                <button class="button button--true hide">Правильно</button>
                 <button class="button button--begin">Начать</button>
-                <button class="button button--false button--hide">Неправильно</button>
+                <button class="button button--false hide">Неправильно</button>
             </div>
 
             <div class="progressBar-wrapper"> <div class="progressBar--false"></div> </div>

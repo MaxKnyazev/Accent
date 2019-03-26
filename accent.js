@@ -1,11 +1,11 @@
 let words = [
-    {trueWord : 'клАла', falseWord : 'клалА'},
-    {trueWord : 'свЕкла', falseWord : 'свеклА'},
-    {trueWord : 'слИвовый', falseWord : 'сливОвый'},
-    {trueWord : 'апострОф', falseWord : 'апОстроф'},
-    {trueWord : 'красИвее', falseWord : 'красивЕе'},
-    {trueWord : 'звонИт', falseWord : 'звОнит'},
-    {trueWord : 'тОртов', falseWord : 'тортОв'},
+        {trueWord : 'клАла', falseWord : 'клалА'},
+        {trueWord : 'свЕкла', falseWord : 'свеклА'},
+        {trueWord : 'слИвовый', falseWord : 'сливОвый'},
+        {trueWord : 'апострОф', falseWord : 'апОстроф'},
+        {trueWord : 'красИвее', falseWord : 'красивЕе'},
+        {trueWord : 'звонИт', falseWord : 'звОнит'},
+        {trueWord : 'тОртов', falseWord : 'тортОв'},
     ],
     lengthWords = words.length-1,
     buttonBegin = document.querySelector('.button--begin'),
@@ -14,6 +14,8 @@ let words = [
     contentButtons = document.querySelector('.content__buttons'),
     progressBarTrue = document.querySelector('.progressBar--true'),
     progressBarFalse = document.querySelector('.progressBar--false'),
+    progressBarWrapper = document.querySelectorAll('.progressBar-wrapper'),
+    gameOver = document.querySelector('.gameOver'),
     index,
     countTrue = 0,
     countFalse = 0;
@@ -66,15 +68,25 @@ function initButtons(flag) {
     reverseButtons();
 }
 
+function endGame() {
+    console.log('game over');
+    progressBarWrapper.forEach(function(elem) {
+        elem.classList.add('opacityNull');
+    });
+    buttonFalse.classList.add('hide');
+    buttonTrue.classList.add('hide');
+    gameOver.classList.remove('hide');
+}
+
 // needReplace(words, index, word);
 // _writeConsole();
 
 // ------------------------- Работа с кнопками -------------------------
 
 buttonBegin.addEventListener('click', function() {
-    buttonTrue.classList.remove('button--hide');
-    buttonFalse.classList.remove('button--hide');
-    this.classList.add('button--hide');
+    buttonTrue.classList.remove('hide');
+    buttonFalse.classList.remove('hide');
+    this.classList.add('hide');
 
 
     // _writeConsole();
@@ -90,6 +102,11 @@ buttonBegin.addEventListener('click', function() {
         //TODO: Проверка на game over
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
+
+        console.log('lengthWords = ' + lengthWords);
+        if (lengthWords === 0) {
+            endGame();
+        }
 
         progressBarTrue.style.width = ++countTrue + '%';
 
