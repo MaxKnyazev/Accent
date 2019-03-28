@@ -153,3 +153,20 @@ body {
             font-weight: bold;
             color: #2d9ae5;
         }
+
+        .gameOver__text {
+            font-size: 1.5rem;
+            /*color: #2d9ae5;*/
+        }
+
+        .gameOver__countCorrect {
+            color: green;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .gameOver__countError {
+            color: red;
+            font-size: 2rem;
+            font-weight: bold;
+        }

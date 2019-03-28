@@ -4,10 +4,10 @@ let words = [
         // {trueWord : 'слИвовый', falseWord : 'сливОвый'},
         // {trueWord : 'апострОф', falseWord : 'апОстроф'},
         // {trueWord : 'красИвее', falseWord : 'красивЕе'},
-        // {trueWord : 'звонИт', falseWord : 'звОнит'},
+        {trueWord : 'звонИт', falseWord : 'звОнит'},
         {trueWord : 'тОртов', falseWord : 'тортОв'},
     ],
-    lengthWords = words.length-1,
+    lengthWords,
     buttonBegin = document.querySelector('.button--begin'),
     buttonTrue = document.querySelector('.button--true'),
     buttonFalse = document.querySelector('.button--false'),
@@ -19,9 +19,21 @@ let words = [
     gameOverCountCorrect = document.querySelector('.gameOver__countCorrect'),
     gameOverCountError = document.querySelector('.gameOver__countError'),
     index,
-    countTrue = 0,
+    countTrue,
+    countFalse;
+
+function init() {
+    lengthWords = words.length-1;
+    countTrue = 0;
     countFalse = 0;
 
+    progressBarTrue.style.width = '0';
+    progressBarFalse.style.width = '0';
+
+    progressBarWrapper.forEach(function (elem) {
+        elem.classList.remove('opacityNull');
+    });
+}
 
 //Функция вычисления случайного числа от min до max включительно
 function randomInteger(min, max) {
@@ -84,14 +96,20 @@ function endGame() {
     buttonTrue.classList.add('hide');
 
     //TODO :**********************************************************/
-    //TODO :  contentButtons.className.split(' ').includes('_column-reverse')   ??? true / false
-    //removeColumnRevers();
+    console.log('+++++++++++++++++ ' + contentButtons.className.split(' ').includes('_column-reverse'))
 
-/**********************************************************/
+    // removeColumnRevers();
+    // contentButtons.style.flexDirection = 'column';
+
+    contentButtons.classList.remove('_column-reverse');
+    contentButtons.classList.add('_column');
+
     gameOverCountCorrect.innerHTML = `${countTrue}`;
     gameOverCountError.innerHTML = `${countFalse}`;
+
     gameOver.classList.remove('hide');
     buttonBegin.classList.remove('hide');
+
 }
 
 // needReplace(words, index, word);
@@ -100,6 +118,9 @@ function endGame() {
 // ------------------------- Работа с кнопками -------------------------
 
 buttonBegin.addEventListener('click', function() {
+    gameOver.classList.add('hide');
+    init();
+
     buttonTrue.classList.remove('hide');
     buttonFalse.classList.remove('hide');
     this.classList.add('hide');
