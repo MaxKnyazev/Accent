@@ -1,10 +1,10 @@
 let words = [
-        {trueWord : 'клАла', falseWord : 'клалА'},
-        {trueWord : 'свЕкла', falseWord : 'свеклА'},
-        {trueWord : 'слИвовый', falseWord : 'сливОвый'},
-        {trueWord : 'апострОф', falseWord : 'апОстроф'},
-        {trueWord : 'красИвее', falseWord : 'красивЕе'},
-        {trueWord : 'звонИт', falseWord : 'звОнит'},
+        // {trueWord : 'клАла', falseWord : 'клалА'},
+        // {trueWord : 'свЕкла', falseWord : 'свеклА'},
+        // {trueWord : 'слИвовый', falseWord : 'сливОвый'},
+        // {trueWord : 'апострОф', falseWord : 'апОстроф'},
+        // {trueWord : 'красИвее', falseWord : 'красивЕе'},
+        // {trueWord : 'звонИт', falseWord : 'звОнит'},
         {trueWord : 'тОртов', falseWord : 'тортОв'},
     ],
     lengthWords = words.length-1,
@@ -16,6 +16,8 @@ let words = [
     progressBarFalse = document.querySelector('.progressBar--false'),
     progressBarWrapper = document.querySelectorAll('.progressBar-wrapper'),
     gameOver = document.querySelector('.gameOver'),
+    gameOverCountCorrect = document.querySelector('.gameOver__countCorrect'),
+    gameOverCountError = document.querySelector('.gameOver__countError'),
     index,
     countTrue = 0,
     countFalse = 0;
@@ -45,17 +47,22 @@ function setButtonsText(i) {
     buttonTrue.innerHTML = words[i].trueWord;
     buttonFalse.innerHTML = words[i].falseWord;
 }
+/**********************************************************/
+function addColumnRevers() {
+    contentButtons.classList.remove('_column');
+    contentButtons.classList.add('_column-reverse');
+}
+
+function removeColumnRevers() {
+    contentButtons.classList.remove('_column-reverse');
+    contentButtons.classList.add('_column');
+}
 
 function reverseButtons() {
-    if (randomInteger(0, 1)) {
-        contentButtons.style.flexDirection = 'column-reverse';
-    } else {
-        contentButtons.style.flexDirection = 'column';
-    }
+    randomInteger(0, 1) ? addColumnRevers() : removeColumnRevers();
 }
 
 function initButtons(flag) {
-
     if (flag) {
         needReplace(words, index);
     }
@@ -75,7 +82,16 @@ function endGame() {
     });
     buttonFalse.classList.add('hide');
     buttonTrue.classList.add('hide');
+
+    //TODO :**********************************************************/
+    //TODO :  contentButtons.className.split(' ').includes('_column-reverse')   ??? true / false
+    //removeColumnRevers();
+
+/**********************************************************/
+    gameOverCountCorrect.innerHTML = `${countTrue}`;
+    gameOverCountError.innerHTML = `${countFalse}`;
     gameOver.classList.remove('hide');
+    buttonBegin.classList.remove('hide');
 }
 
 // needReplace(words, index, word);
@@ -104,11 +120,12 @@ buttonBegin.addEventListener('click', function() {
         // Поставить новую пару слов в кнопки.
 
         console.log('lengthWords = ' + lengthWords);
+        progressBarTrue.style.width = ++countTrue + '%';
         if (lengthWords === 0) {
             endGame();
         }
 
-        progressBarTrue.style.width = ++countTrue + '%';
+        console.log('countTrue = ' + countTrue);
 
         initButtons(true);
 

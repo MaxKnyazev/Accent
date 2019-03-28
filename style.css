@@ -18,6 +18,13 @@ body {
 .hide {
     display: none;
 }
+/**********************************************************/
+._column-reverse {
+    flex-direction: column-reverse;
+}
+._column {
+    flex-direction: column;
+}
 
 .wrapper {
 
@@ -28,7 +35,6 @@ body {
     flex-direction: column;
 
 }
-
     .content {
         background-color: #e4faff;
         /*background-color: rgba(45, 154, 229, 0.1);*/
@@ -93,7 +99,7 @@ body {
         .content__buttons {
             display: flex;
             flex-wrap: wrap;
-            flex-direction: column;
+            /*flex-direction: column;*/
             /*flex-direction: column-reverse;*/
             align-items: center;
             margin-top: 150px;
@@ -110,12 +116,19 @@ body {
                 font-weight: bold;
                 transition: background-color 500ms;
                 background-color: #e4faff;
+/**********************************************************/
+                min-width: 200px;
             }
 
                 .button:hover {
                     color: #fff;
                     background-color: #2d9ae5;
                     transition: background-color 500ms, color 1000ms;
+                }
+
+/**********************************************************/
+                .button--begin {
+                    margin: 44px 0 44px 0;
                 }
 
                 .button--true {
@@ -129,3 +142,14 @@ body {
                 /*.button--begin:hover .button-hide {*/
                     /*display: block;*/
                 /*}*/
+
+    .gameOver {
+        text-align: center;
+        align-items: center;
+    }
+
+        .gameOver__title {
+            font-size: 35px;
+            font-weight: bold;
+            color: #2d9ae5;
+        }
