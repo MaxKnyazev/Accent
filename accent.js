@@ -96,13 +96,14 @@ function endGame() {
     buttonTrue.classList.add('hide');
 
     //TODO :**********************************************************/
-    console.log('+++++++++++++++++ ' + contentButtons.className.split(' ').includes('_column-reverse'))
+    // console.log('+++++++++++++++++ ' + contentButtons.className.split(' ').includes('_column-reverse'))
+    console.log(contentButtons.className.split(' '));
 
-    // removeColumnRevers();
     // contentButtons.style.flexDirection = 'column';
 
-    contentButtons.classList.remove('_column-reverse');
-    contentButtons.classList.add('_column');
+    // contentButtons.classList.remove('_column-reverse');
+    // contentButtons.classList.add('_column');
+    removeColumnRevers();
 
     gameOverCountCorrect.innerHTML = `${countTrue}`;
     gameOverCountError.innerHTML = `${countFalse}`;
@@ -140,15 +141,33 @@ buttonBegin.addEventListener('click', function() {
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
 
-        console.log('lengthWords = ' + lengthWords);
         progressBarTrue.style.width = ++countTrue + '%';
-        if (lengthWords === 0) {
+        // console.log('countTrue = ' + countTrue);
+
+
+
+
+        if (lengthWords !== 0) {
+            // console.log('lengthWords = ' + lengthWords);
+            initButtons(true);
+        } else {
             endGame();
         }
 
-        console.log('countTrue = ' + countTrue);
 
-        initButtons(true);
+
+        // if (lengthWords === 0) {
+        //     endGame();
+        // }
+        //
+        // console.log('countTrue = ' + countTrue);
+        //
+        // initButtons(true);
+
+
+
+
+
 
         // _writeConsole();
     });
