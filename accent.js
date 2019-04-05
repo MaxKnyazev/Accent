@@ -134,10 +134,10 @@ buttonBegin.addEventListener('click', function() {
 
     buttonTrue.addEventListener('click', function() {
         //TODO: поменять background-color кнопкам (сообщение пользователю).
-        //TODO: progress bar true - увеличить значение на 1.
+        // progress bar true - увеличить значение на 1.
         // Текущее слово должно попасть в конец массива.
         // Уменьшить lengthWords на 1.
-        //TODO: Проверка на game over
+        //TODO: Проверка на end game
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
 
@@ -148,8 +148,22 @@ buttonBegin.addEventListener('click', function() {
 
 
         if (lengthWords !== 0) {
-            // console.log('lengthWords = ' + lengthWords);
-            initButtons(true);
+            console.log('lengthWords = ' + lengthWords);
+            buttonFalse.classList.add('opacityNull');
+            buttonTrue.classList.add('opacityNull');
+            setTimeout(function() {
+                buttonFalse.classList.add('hide');
+                buttonTrue.classList.add('hide');
+                setTimeout(function() {
+                    initButtons(true);
+                    buttonFalse.classList.remove('hide');
+                    buttonTrue.classList.remove('hide');
+                    setTimeout(function() {
+                        buttonTrue.classList.remove('opacityNull');
+                        buttonFalse.classList.remove('opacityNull');
+                    }, 500)
+                }, 500)
+            }, 500);
         } else {
             endGame();
         }
@@ -174,7 +188,7 @@ buttonBegin.addEventListener('click', function() {
 
     buttonFalse.addEventListener('click', function() {
         //TODO: поменять background-color кнопкам (сообщение пользователю).
-        //TODO: progress bar false - увеличить значение на 1.
+        // progress bar false - увеличить значение на 1.
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
 
@@ -182,7 +196,21 @@ buttonBegin.addEventListener('click', function() {
 
         progressBarFalse.style.width = ++countFalse + '%';
 
-        initButtons(false);
+        buttonFalse.classList.add('opacityNull');
+        buttonTrue.classList.add('opacityNull');
+        setTimeout(function() {
+            buttonFalse.classList.add('hide');
+            buttonTrue.classList.add('hide');
+            setTimeout(function() {
+                initButtons(false);
+                buttonFalse.classList.remove('hide');
+                buttonTrue.classList.remove('hide');
+                setTimeout(function() {
+                    buttonTrue.classList.remove('opacityNull');
+                    buttonFalse.classList.remove('opacityNull');
+                }, 500)
+            }, 500)
+        }, 500);
 
         // _writeConsole();
     });
