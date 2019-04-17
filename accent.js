@@ -8,19 +8,25 @@ let words = [
         {trueWord : 'тОртов', falseWord : 'тортОв'},
     ],
     lengthWords,
+    content = document.querySelector('.content'),
     buttonBegin = document.querySelector('.button--begin'),
     buttonTrue = document.querySelector('.button--true'),
     buttonFalse = document.querySelector('.button--false'),
     contentButtons = document.querySelector('.content__buttons'),
     progressBarTrue = document.querySelector('.progressBar--true'),
     progressBarFalse = document.querySelector('.progressBar--false'),
-    progressBarWrapper = document.querySelectorAll('.progressBar-wrapper'),
+    progressBarWrapper = document.querySelectorAll('.progressBar__wrapper'),
+    progressBarWrapperTrue = document.querySelector('.progressBar__wrapper--true'),
+    progressBarWrapperFalse = document.querySelector('.progressBar__wrapper--false'),
     gameOver = document.querySelector('.gameOver'),
     gameOverCountCorrect = document.querySelector('.gameOver__countCorrect'),
     gameOverCountError = document.querySelector('.gameOver__countError'),
     index,
     countTrue,
-    countFalse;
+    countFalse,
+    colorDefault = '#2d9ae5',
+    colorTrue = '#7eff65',
+    colorFalse = '#ff234e';
 
 function init() {
     lengthWords = words.length-1;
@@ -137,20 +143,22 @@ buttonBegin.addEventListener('click', function() {
         // progress bar true - увеличить значение на 1.
         // Текущее слово должно попасть в конец массива.
         // Уменьшить lengthWords на 1.
-        //TODO: Проверка на end game
+        // Проверка на end game
         // Расчитать новую пару слов.
         // Поставить новую пару слов в кнопки.
-
         progressBarTrue.style.width = ++countTrue + '%';
         // console.log('countTrue = ' + countTrue);
-
-
-
 
         if (lengthWords !== 0) {
             console.log('lengthWords = ' + lengthWords);
             buttonFalse.classList.add('opacityNull');
             buttonTrue.classList.add('opacityNull');
+
+            //TODO: покрасить бордеры в colorTrue
+            progressBarWrapperTrue.style.borderColor = colorTrue;
+            content.style.borderColor = colorTrue;
+            progressBarTrue.style.backgroundColor = colorTrue;
+
             setTimeout(function() {
                 buttonFalse.classList.add('hide');
                 buttonTrue.classList.add('hide');
@@ -161,27 +169,16 @@ buttonBegin.addEventListener('click', function() {
                     setTimeout(function() {
                         buttonTrue.classList.remove('opacityNull');
                         buttonFalse.classList.remove('opacityNull');
+
+                        progressBarWrapperTrue.style.borderColor = colorDefault;
+                        content.style.borderColor = colorDefault;
+                        progressBarTrue.style.backgroundColor = colorDefault;
                     }, 500)
                 }, 500)
             }, 500);
         } else {
             endGame();
         }
-
-
-
-        // if (lengthWords === 0) {
-        //     endGame();
-        // }
-        //
-        // console.log('countTrue = ' + countTrue);
-        //
-        // initButtons(true);
-
-
-
-
-
 
         // _writeConsole();
     });
@@ -198,6 +195,11 @@ buttonBegin.addEventListener('click', function() {
 
         buttonFalse.classList.add('opacityNull');
         buttonTrue.classList.add('opacityNull');
+
+        progressBarWrapperFalse.style.borderColor = colorFalse;
+        content.style.borderColor = colorFalse;
+        progressBarFalse.style.backgroundColor = colorFalse;
+
         setTimeout(function() {
             buttonFalse.classList.add('hide');
             buttonTrue.classList.add('hide');
@@ -208,6 +210,10 @@ buttonBegin.addEventListener('click', function() {
                 setTimeout(function() {
                     buttonTrue.classList.remove('opacityNull');
                     buttonFalse.classList.remove('opacityNull');
+
+                    progressBarWrapperFalse.style.borderColor = colorDefault;
+                    content.style.borderColor = colorDefault;
+                    progressBarFalse.style.backgroundColor = colorDefault;
                 }, 500)
             }, 500)
         }, 500);
