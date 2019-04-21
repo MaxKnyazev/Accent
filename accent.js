@@ -21,6 +21,7 @@ let words = [
     gameOver = document.querySelector('.gameOver'),
     gameOverCountCorrect = document.querySelector('.gameOver__countCorrect'),
     gameOverCountError = document.querySelector('.gameOver__countError'),
+    buttonNormalize = document.querySelector('.button__normalize'),
     index,
     countTrue,
     countFalse,
@@ -162,8 +163,12 @@ buttonBegin.addEventListener('click', function() {
             setTimeout(function() {
                 buttonFalse.classList.add('hide');
                 buttonTrue.classList.add('hide');
+
+                buttonNormalize.classList.remove('hide');
                 setTimeout(function() {
                     initButtons(true);
+                    buttonNormalize.classList.add('hide');
+
                     buttonFalse.classList.remove('hide');
                     buttonTrue.classList.remove('hide');
                     setTimeout(function() {
@@ -203,8 +208,12 @@ buttonBegin.addEventListener('click', function() {
         setTimeout(function() {
             buttonFalse.classList.add('hide');
             buttonTrue.classList.add('hide');
+
+            buttonNormalize.classList.remove('hide');
             setTimeout(function() {
                 initButtons(false);
+                buttonNormalize.classList.add('hide');
+
                 buttonFalse.classList.remove('hide');
                 buttonTrue.classList.remove('hide');
                 setTimeout(function() {
